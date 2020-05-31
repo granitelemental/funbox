@@ -5,7 +5,6 @@ import validators
 from flask import Flask, jsonify, request, Response
 import redis
 
-
 app = Flask('API')
 redis = redis.Redis()
 is_db_connected = redis.ping()
