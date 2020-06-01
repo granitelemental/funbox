@@ -19,4 +19,9 @@ Agruments: from, to - utc timestamps. Default: -inf, +inf
 4) Tests:
     TestPost - tests for saving visited domains.
     TestsGet - tests for getting visited domains
+
+
+### Comments
+
+До этого задания я не имела дела с юнит-тестами, так что код может выглядеть весьма странно.
     
