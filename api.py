@@ -41,7 +41,6 @@ def add_domains():
         redis.zadd("visited_links", domains)
     except Exception as e:
         return {"status": str(e)}, 500
-
     return {"status": "ok"}
     
 
@@ -64,7 +63,6 @@ def get_domains():
         res = list(set(res))
     except Exception as e:
         return {"status": str(e)}, 500
-
     return {"domains": res, "status": "ok"}
 
 
