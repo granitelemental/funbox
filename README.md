@@ -16,6 +16,6 @@
     Agruments: from, to - utc timestamps. Default: -inf, +inf
 
 4) Tests:
-    TestPost - tests for saving visited domains
+    TestPost - tests for saving visited domains.
     TestsGet - tests for getting visited domains
     
