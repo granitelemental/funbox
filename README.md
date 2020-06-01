@@ -7,10 +7,15 @@
     Request body format: {
         links: [
             "link1",
-            "link2"
+            "link2",
+            ...
         ]
     }
     
     b) /visited_domains - gets domain names wisited in certain period.
     Agruments: from, to - utc timestamps. Default: -inf, +inf
+
+4) Tests:
+    TestPost - tests for saving visited domains
+    TestsGet - tests for getting visited domains
     
