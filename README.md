@@ -1,7 +1,7 @@
 ### Usage
 
-1) docker-compose build
-2) docker-compose up
+1) `docker-compose build`
+2) `docker-compose up`
 3) Requests to api:
 
 - `POST /visited_links` - posts domains into database. Request body format: 
@@ -18,10 +18,9 @@
 - `GET /visited_domains` - gets domain names wisited in certain period.
 Agruments: `from`, `to` - utc timestamps. Default: `"-inf"`, `"+inf"`.
 
-4) Tests: 
+4) Tests: `python flask_test.py`
 
 ```
-python flask_test.py
 TestPost class- tests for saving visited domains,
 TestsGet class- tests for getting visited domains.
 ```
