@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flask import Flask, jsonify, request, Response
+from flask import Flask, request
 import redis
 import tldextract
 import validators
