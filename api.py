@@ -14,7 +14,7 @@ redis_host = os.environ.get('REDIS_HOST', "localhost")
 logging.info(redis_host)
 
 redis = redis.Redis(host=redis_host, port=6379)
-is_db_connected = True  # redis.ping()
+is_db_connected = redis.ping()
 
 
 def check_valid_domain(link):
@@ -62,11 +62,10 @@ def get_domains():
     try:
         start = request.args.get("from", "-inf")
         end = request.args.get("to", "+inf")
-        staer_end_passed = start != "-inf" and end != "+inf"
-        assert not staer_end_passed ^ (start.isdigit() and end.isdigit()), (
-            "start/end is not a digit")
-        assert not staer_end_passed and int(start) > int(end), (
-            "'from' is greater than 'to'")
+        if start != "-inf" and end != "+inf":
+            assert start.isdigit() and end.isdigit(), "start/end is non-digit"
+            assert int(start) < int(end), (
+                "'from' is greater(equal) than 'to'")
     except Exception as e:
         return {"status": str(e)}, 400
 
@@ -84,4 +83,4 @@ def get_domains():
     return {"domains": res, "status": "ok"}
 
 
-app.run(host="localhost", port="8080", debug=True)
+app.run(host='0.0.0.0', port="8080", debug=True)

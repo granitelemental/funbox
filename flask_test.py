@@ -2,7 +2,7 @@ import requests
 
 
 class TestPost:
-    url = "http://localhost:8080/visited_links"
+    url = "http://0.0.0.0:8080/visited_links"
 
     def test_post_ok(self):
         json = {"links": [
@@ -68,7 +68,7 @@ class TestPost:
 
 
 class TestGet:
-    url = "http://localhost:8080/visited_domains"
+    url = "http://0.0.0.0:8080/visited_domains"
 
     def test_valid_from_to(self):
         data = [{"start": "a", "end": 1}, {"start": 1, "end": "a"}]
@@ -76,11 +76,12 @@ class TestGet:
             url = self.url + f"?from={d['start']}&to={d['end']}"
             response = requests.get(url=url)
             result = (response.json(), response.status_code)
-            assert result == ({"status": "start/end is not a digit"}, 400)
+            assert result == ({"status": "start/end is non-digit"}, 400)
 
     def test_from_greater_than_to(self):
         start, end = 2, 1
         url = self.url + f"?from={start}&to={end}"
         response = requests.get(url=url)
         result = (response.json(), response.status_code)
-        assert result == ({"status": "'from' is greater than 'to'"}, 400)
+        assert result == (
+            {"status": "'from' is greater(equal) than 'to'"}, 400)
