@@ -2,7 +2,6 @@ from datetime import datetime, timezone
 import os
 
 from flask import Flask, request
-import logging
 import redis
 import tldextract
 import validators
@@ -11,8 +10,6 @@ import validators
 app = Flask('API')
 
 redis_host = os.environ.get('REDIS_HOST', "localhost")
-logging.info(redis_host)
-
 redis = redis.Redis(host=redis_host, port=6379)
 is_db_connected = redis.ping()
 
