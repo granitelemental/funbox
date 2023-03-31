@@ -1,4 +1,4 @@
 flask==1.1.1
-redis==3.5.2
+redis==4.4.4
 tldextract==2.2.2
 validators==0.15.0
